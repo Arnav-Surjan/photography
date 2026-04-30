@@ -27,7 +27,7 @@ And, of course, you don't want my name at the bottom to show up. You can change 
 ## Run the website locally to test
 1. `$ cd photography` - go to the project directory
 2. `$ bundle install` - install gems
-3. Change the `baseurl` in `_config.yml`
+3. Change the `baseurl` in `_config.yml` to an empty value
 4. `$ bundle exec jekyll serve` - start/run the website
 
 ### Build the website
@@ -67,6 +67,9 @@ Proudly sponsored by these awesome apps. Support this project by becoming a spon
         </td>
         <td>
             <a href="https://facescreenapp.com/" target="_blank"><img src="https://github.com/user-attachments/assets/b251b413-ccc4-48f1-a316-c2c2a71f959e" width="150" height="150"></a>
+        </td>
+        <td>
+            <a href="https://keyscreenapp.com" target="_blank"><img src="https://github.com/user-attachments/assets/4b75a739-b4b5-432c-a03c-a9bdd8309934" width="150" height="150"></a>
         </td>
         <td>
             <a href="https://todobarapp.com/" target="_blank"><img src="https://todobarapp.com/assets/img/todobar/app-icon-512.png" width="150" height="150"></a>
