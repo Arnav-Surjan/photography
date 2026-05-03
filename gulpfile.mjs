@@ -32,6 +32,8 @@ gulp.task('resize-images', async function () {
     await Promise.all(imageFiles.map(async (fileName) => {
         await sharp(path.join('images/fulls', fileName))
             .resize({ width: 512, withoutEnlargement: true })
+            // Preserve original metadata (EXIF) when writing thumbnails
+            .withMetadata()
             .toFile(path.join('images/thumbs', fileName));
     }));
 });

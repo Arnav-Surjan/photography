@@ -1,6 +1,9 @@
 # Base configs
+## Use an empty `baseurl` when testing locally to avoid cross-origin EXIF issues
+# Production baseurl (uncomment for production):
 baseurl: "https://snapshots.arnavsurjan.com"
-# baseurl: "" # Comment the above line and uncomment this to test the website locally
+## Local testing baseurl (active):
+# baseurl: ""
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"

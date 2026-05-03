@@ -186,8 +186,8 @@
 	  // This sets the background of the "image" <span> to the image pointed to by its child
 	  // <img> (which is then hidden). Gives us way more flexibility.
   
-	  // Set background.
-	  $image.css("background-image", "url(" + $image_img.attr("src") + ")");
+	// Set background. Use encoded URL and quoted value to handle spaces/parentheses
+	$image.css("background-image", 'url("' + encodeURI($image_img.attr("src")) + '")');
   
 	  // Set background position.
 	  if ((x = $image_img.data("position"))) $image.css("background-position", x);
