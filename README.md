@@ -46,8 +46,8 @@ and thumbnail generation__. So if you're lazy like me then you can just do the f
 1. Fork and clone the project to your computer
 2. Go inside the project `$ cd photography`
 3. Install all dependencies by `$ npm install`
-4. Copy all your pictures (possibly jpg, the largest size available, straight from your camera) and put it inside `images` directory
-5. Run `$ gulp resize` to resize the images and to generate thumbnails automatically
+4. Copy all your pictures (possibly jpg, the largest size available, straight from your camera) into `images/fulls`
+5. Run `$ npx gulp resize` to generate thumbnails automatically in `images/thumbs`
 6. Push your changes to github.com by `$ git add --all` and `$ git commit -m "a nice commit message"` and then finally `$ git push origin master`
 
 ### Contact Form

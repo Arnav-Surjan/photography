@@ -1,12 +1,13 @@
 import gulp from 'gulp';
-import imageResize from 'gulp-image-resize';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import uglify from 'gulp-uglify';
 import rename from 'gulp-rename';
 import filter from 'gulp-filter';
-import path from 'path';
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
 import del from 'del';
+import sharp from 'sharp';
 
 const sass = gulpSass(dartSass);
 const cssSourceGlob = './assets/sass/**/*.scss';
@@ -18,21 +19,21 @@ const generatedCssFiles = [
 ];
 
 gulp.task('delete', function () {
-    return del(['images/*.*']);
+    return del(['images/thumbs/*.*']);
 });
 
-gulp.task('resize-images', function () {
-    return gulp.src('images/*.*')
-        .pipe(imageResize({
-            width: 1024,
-            imageMagick: true
-        }))
-        .pipe(gulp.dest('images/fulls'))
-        .pipe(imageResize({
-            width: 512,
-            imageMagick: true
-        }))
-        .pipe(gulp.dest('images/thumbs'));
+gulp.task('resize-images', async function () {
+    const sourceFiles = await readdir('images/fulls', { withFileTypes: true });
+    const imageFiles = sourceFiles
+        .filter((entry) => entry.isFile())
+        .map((entry) => entry.name)
+        .filter((fileName) => /\.(jpe?g|png|gif|webp)$/i.test(fileName));
+
+    await Promise.all(imageFiles.map(async (fileName) => {
+        await sharp(path.join('images/fulls', fileName))
+            .resize({ width: 512, withoutEnlargement: true })
+            .toFile(path.join('images/thumbs', fileName));
+    }));
 });
 
 // clear previously generated css
